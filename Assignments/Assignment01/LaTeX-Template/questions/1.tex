@@ -1,9 +1,36 @@
-\subsectionaddtolist{الف}
+\[
+h[n] = (n+1)\alpha^n u[n], \qquad |\alpha| < 1
+\]
 
-% {
-% 	\centering{
-		
-% 		 \includegraphics[width=0.4\textwidth]{figs/3.png}
-		
-% 	}
-% }
+پاسخ پله‌ای برابر خروجی سیستم در برابر ورودی \(x[n]=u[n]\) است. بنابراین:
+\[
+s[n] = h[n] * u[n]
+\]
+
+ برای \(n \ge 0\) داریم:
+\[
+s[n] = \sum_{k=0}^{n} h[k]
+     = \sum_{k=0}^{n} (k+1)\alpha^k
+\]
+
+\[
+\sum_{k=0}^{n} (k+1)\alpha^k
+=
+\frac{1-(n+2)\alpha^{n+1}+(n+1)\alpha^{n+2}}{(1-\alpha)^2}
+\]
+
+پس پاسخ پله‌ای سیستم برابر است با:
+\[
+\boxed{
+s[n] =
+\frac{1-(n+2)\alpha^{n+1}+(n+1)\alpha^{n+2}}{(1-\alpha)^2}u[n]
+}
+\]
+
+همچنین چون \(|\alpha|<1\)، مقدار نهایی پاسخ پله‌ای برابر است با:
+
+\[
+    \boxed{
+        \lim_{n\to\infty}s[n] = \frac{1}{(1-\alpha)^2}
+        }
+\]

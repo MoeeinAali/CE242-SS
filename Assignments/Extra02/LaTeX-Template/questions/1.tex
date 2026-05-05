@@ -1,0 +1,55 @@
+\subsection*{الف}
+
+تبدیل فوریهٔ $y^*[-n]$ برابر است با $Y^*(e^{j\omega})$.
+همچنین می‌دانیم ضرب در حوزهٔ فرکانس متناظر با کانولوشن در حوزهٔ زمان است.
+
+پس اگر:
+\[
+G(e^{j\omega}) = X(e^{j\omega}) Y^*(e^{j\omega})
+\]
+آنگاه در حوزهٔ زمان خواهیم داشت:
+\[
+g[n] = x[n] * y^*[-n]
+\]
+
+بنابراین این دو یک زوج تبدیل فوریه تشکیل می‌دهند.
+
+\subsection*{ب}
+
+از قسمت (الف) داریم:
+\[
+g[n] = x[n] * y^*[-n]
+\quad \Longleftrightarrow \quad
+G(e^{j\omega}) = X(e^{j\omega})Y^*(e^{j\omega})
+\]
+
+اکنون از رابطهٔ تبدیل فوریهٔ معکوس استفاده می‌کنیم:
+\[
+g[n] =
+\frac{1}{2\pi}
+\int_{-\pi}^{\pi}
+X(e^{j\omega})Y^*(e^{j\omega}) e^{j\omega n} d\omega
+\]
+
+از طرف دیگر، با باز کردن کانولوشن:
+\[
+g[n] = \sum_{k=-\infty}^{\infty} x[k]\, y^*[k-n]
+\]
+
+پس:
+\[
+\frac{1}{2\pi}
+\int_{-\pi}^{\pi}
+X(e^{j\omega})Y^*(e^{j\omega}) e^{j\omega n} d\omega
+=
+\sum_{k=-\infty}^{\infty} x[k]\, y^*[k-n]
+\]
+
+حال اگر $n=0$ قرار دهیم:
+\[
+\frac{1}{2\pi}
+\int_{-\pi}^{\pi}
+X(e^{j\omega})Y^*(e^{j\omega}) d\omega
+=
+\sum_{k=-\infty}^{\infty} x[k]\, y^*[k]
+\]

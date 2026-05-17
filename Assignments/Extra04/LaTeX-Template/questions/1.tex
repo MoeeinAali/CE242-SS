@@ -1,0 +1,66 @@
+\مسئله{}
+یک سیستم خطی تغییرناپذیر با زمان (LTI) دارای پاسخ فرکانسی زیر است:
+\[
+H(e^{j\omega}) = \begin{cases} 
+e^{-j3\omega}, & |\omega| < \frac{2\pi}{16} \left(\frac{3}{2}\right) \\ 
+0, & \frac{2\pi}{16}\left(\frac{3}{2}\right) < |\omega| < \pi 
+\end{cases}
+\]
+
+ورودی این سیستم یک قطار ضربه واحد متناوب با دوره تناوب $N=16$ است که به صورت زیر تعریف می‌شود:
+\[
+x[n] = \sum_{k=-\infty}^{\infty} \delta[n + 16k]
+\]
+
+خروجی سیستم، یعنی $y[n]$ را بیابید.
+
+\textbf{بخش امتیازی:} مسئله را با استفاده از خواص تابع دلتا و فیلتر پایین‌گذر حل کنید.
+
+\حل{}
+
+سیگنال ورودی $x[n]$ یک قطار ضربه واحد متناوب با دوره تناوب $N = 16$ است. با توجه به خواص تبدیل فوریه، DTFT یک قطار ضربه متناوب در حوزه زمان، به صورت یک قطار ضربه پیوسته در حوزه فرکانس ظاهر می‌شود:
+\[
+X(e^{j\omega}) = \frac{2\pi}{N} \sum_{m=-\infty}^{\infty} \delta\left(\omega - \frac{2\pi m}{N}\right) = \frac{2\pi}{16} \sum_{m=-\infty}^{\infty} \delta\left(\omega - \frac{2\pi m}{16}\right)
+\]
+
+پاسخ فرکانسی $H(e^{j\omega})$ نشان‌دهنده یک فیلتر پایین‌گذر ایده‌آل با تغییر فاز خطی (تأخیر به اندازه ۳ نمونه) و فرکانس قطع زیر است:
+\[
+\omega_c = \frac{2\pi}{16} \left(\frac{3}{2}\right) = \frac{3\pi}{16} = 0.1875\pi
+\]
+
+خروجی در حوزه فرکانس به صورت $Y(e^{j\omega}) = H(e^{j\omega}) X(e^{j\omega})$ تعریف می‌شود. از آنجا که بهره فیلتر برای فرکانس‌های خارج از باند عبور ($|\omega| \ge \omega_c$) برابر صفر است، تنها کافی است مشخص کنیم کدام‌یک از ضربه‌های $X(e^{j\omega})$ در بازه تناوب اصلی $[-\pi, \pi]$ درون باند عبور $|\omega| < \frac{3\pi}{16}$ قرار می‌گیرند:
+\[
+\left| \frac{2\pi m}{16} \right| < \frac{3\pi}{16} \implies |m| < \frac{3}{2} = 1.5
+\]
+
+از آنجا که $m$ باید یک عدد صحیح باشد ($m \in \mathbb{Z}$)، تنها مقادیر مجاز عبارتند از:
+\[
+m = -1, \quad m = 0, \quad m = 1
+\]
+سایر مولفه‌های فرکانسی (هارمونیک‌ها) به طور کامل توسط فیلتر حذف می‌شوند. بنابراین، در بازه $[-\pi, \pi]$، طیف خروجی فیلتر شده برابر است با:
+\[
+Y(e^{j\omega}) = e^{-j3\omega} \cdot \frac{2\pi}{16} \left[ \delta\left(\omega + \frac{2\pi}{16}\right) + \delta(\omega) + \delta\left(\omega - \frac{2\pi}{16}\right) \right]
+\]
+
+با توجه به خاصیت نمونه‌برداری تابع دلتای پیوسته، می‌دانیم که $f(\omega)\delta(\omega - \omega_0) = f(\omega_0)\delta(\omega - \omega_0)$. بنابراین، پاسخ فازی $e^{-j3\omega}$ را در محل دقیق هر یک از ضربه‌ها محاسبه می‌کنیم:
+\begin{itemize}
+    \item به ازای $\omega = 0$: \quad $e^{-j3(0)} = 1$
+    \item به ازای $\omega = \frac{2\pi}{16}$: \quad $e^{-j3\left(\frac{2\pi}{16}\right)} = e^{-j\frac{6\pi}{16}} = e^{-j\frac{3\pi}{8}}$
+    \item به ازای $\omega = -\frac{2\pi}{16}$: \quad $e^{-j3\left(-\frac{2\pi}{16}\right)} = e^{j\frac{6\pi}{16}} = e^{j\frac{3\pi}{8}}$
+\end{itemize}
+
+با جایگذاری این مقادیر، طیف صریح خروجی به دست می‌آید:
+\[
+Y(e^{j\omega}) = \frac{2\pi}{16} \delta(\omega) + \frac{2\pi}{16} e^{-j\frac{3\pi}{8}} \delta\left(\omega - \frac{2\pi}{16}\right) + \frac{2\pi}{16} e^{j\frac{3\pi}{8}} \delta\left(\omega + \frac{2\pi}{16}\right)
+\]
+
+برای بازگشت به حوزه زمان‌گسسته، از فرمول تبدیل فوریه زمان‌گسسته معکوس (IDTFT) استفاده کرده و با استفاده از خاصیت غربالی تابع دلتا زیر انتگرال ($\int_{-\pi}^{\pi} \delta(\omega - \omega_0) e^{j\omega n} d\omega = e^{j\omega_0 n}$)، مراحل ساده‌سازی را اعمال می‌کنیم:
+\[
+\begin{aligned}
+y[n] &= \frac{1}{2\pi} \int_{-\pi}^{\pi} Y(e^{j\omega}) e^{j\omega n} d\omega \\
+&= \frac{1}{2\pi} \cdot \frac{2\pi}{16} \left[ 1 \cdot e^{j(0)n} + e^{-j\frac{3\pi}{8}} e^{j\frac{2\pi n}{16}} + e^{j\frac{3\pi}{8}} e^{-j\frac{2\pi n}{16}} \right] \\
+&= \frac{1}{16} + \frac{1}{16} \left[ e^{j\left(\frac{2\pi n}{16} - \frac{3\pi}{8}\right)} + e^{-j\left(\frac{2\pi n}{16} - \frac{3\pi}{8}\right)} \right] \\
+&= \frac{1}{16} + \frac{1}{16} \cdot 2 \cos\left(\frac{2\pi n}{16} - \frac{3\pi}{8}\right) \\
+&= \frac{1}{16} + \frac{1}{8} \cos\left(\frac{2\pi n}{16} - \frac{3\pi}{8}\right)
+\end{aligned}
+\]

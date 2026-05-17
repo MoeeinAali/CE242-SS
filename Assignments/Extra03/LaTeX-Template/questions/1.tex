@@ -1,0 +1,182 @@
+
+\newcommand{\F}[1]{\mathcal{F}\!\left\{#1\right\}}
+\newcommand{\sgn}{\operatorname{sgn}}
+
+
+\section*{هدف}
+ 
+می‌خواهیم ثابت کنیم:
+\[
+  \F{u(t)} = \pi\,\delta(\omega) + \frac{1}{j\omega}
+\]
+ 
+% ── گام ۱ ─────────────────────────────────────────────────
+\section*{گام ۱ --- تجزیه \textenglish{u(t)}}
+ 
+تابع علامت را با شرط‌بندی مستقیم تعریف می‌کنیم:
+\[
+  \sgn(t) =
+  \begin{cases}
+    +1 & t > 0 \\
+    -1 & t < 0
+  \end{cases}
+\]
+ 
+رابطه کلیدی که به‌سادگی با جایگذاری قابل تأیید است:
+\[
+  \boxed{u(t) = \frac{1}{2} + \frac{1}{2}\,\sgn(t)}
+\]
+ 
+پس با خطی بودن تبدیل فوریه:
+\[
+  \F{u(t)} = \frac{1}{2}\F{1} + \frac{1}{2}\F{\sgn(t)}
+\]
+ 
+% ── گام ۲ ─────────────────────────────────────────────────
+\section*{گام ۲ --- منظم‌سازی \textenglish{sgn(t)} بدون استفاده از \textenglish{u(t)}}
+ 
+تابع $g_\varepsilon$ را مستقیماً با شرط‌بندی تعریف می‌کنیم:
+\[
+  g_\varepsilon(t) =
+  \begin{cases}
+    \phantom{-}e^{-\varepsilon t} & t > 0 \\[4pt]
+    -e^{+\varepsilon t}           & t < 0
+  \end{cases}
+  \qquad \varepsilon > 0
+\]
+ 
+این تعریف هیچ وابستگی به $u(t)$ ندارد. برای هر $\varepsilon > 0$:
+\[
+  \int_{-\infty}^{\infty}|g_\varepsilon(t)|\,dt
+  = \int_{0}^{\infty} e^{-\varepsilon t}\,dt + \int_{-\infty}^{0} e^{+\varepsilon t}\,dt
+  = \frac{1}{\varepsilon} + \frac{1}{\varepsilon}
+  = \frac{2}{\varepsilon} < \infty
+\]
+ 
+و با $\varepsilon \to 0^+$ به $\sgn(t)$ می‌رسیم:
+\[
+  \sgn(t) = \lim_{\varepsilon \to 0^+} g_\varepsilon(t)
+\]
+ 
+% ── گام ۳ ─────────────────────────────────────────────────
+\section*{گام ۳ --- محاسبه \textenglish{$\mathcal{F}\{g_\varepsilon\}$} با انتگرال مستقیم}
+ 
+تبدیل فوریه را روی دو بازه جداگانه می‌نویسیم:
+\[
+  \F{g_\varepsilon(t)}
+  = \int_{0}^{\infty} e^{-\varepsilon t}\,e^{-j\omega t}\,dt
+  \;-\;
+  \int_{-\infty}^{0} e^{+\varepsilon t}\,e^{-j\omega t}\,dt
+\]
+ 
+\textbf{انتگرال اول} ($t > 0$):
+\[
+  \int_{0}^{\infty} e^{-(\varepsilon+j\omega)t}\,dt
+  = \left[\frac{-e^{-(\varepsilon+j\omega)t}}{\varepsilon+j\omega}\right]_{0}^{\infty}
+  = \frac{1}{\varepsilon + j\omega}
+\]
+ 
+\textbf{انتگرال دوم} ($t < 0$):
+\[
+  \int_{-\infty}^{0} e^{(\varepsilon-j\omega)t}\,dt
+  = \left[\frac{e^{(\varepsilon-j\omega)t}}{\varepsilon-j\omega}\right]_{-\infty}^{0}
+  = \frac{1}{\varepsilon - j\omega}
+\]
+ 
+پس:
+\begin{align*}
+  \F{g_\varepsilon(t)}
+  &= \frac{1}{\varepsilon+j\omega} - \frac{1}{\varepsilon-j\omega} \\[8pt]
+  &= \frac{(\varepsilon - j\omega) - (\varepsilon + j\omega)}{(\varepsilon+j\omega)(\varepsilon-j\omega)} \\[8pt]
+  &= \frac{-2j\omega}{\varepsilon^2 + \omega^2}
+\end{align*}
+ 
+% ── نکته ۱: تعویض حد و انتگرال ───────────────────────────
+\subsection*{نکته: توجیه تعویض حد و انتگرال}
+ 
+برای گرفتن حد از $\F{\sgn(t)}$ لازم است ترتیب حد و انتگرال را عوض کنیم:
+\[
+  \lim_{\varepsilon \to 0^+} \int_{-\infty}^{\infty} g_\varepsilon(t)\, e^{-j\omega t}\, dt
+  \;\overset{?}{=}\;
+  \int_{-\infty}^{\infty} \lim_{\varepsilon \to 0^+} g_\varepsilon(t)\, e^{-j\omega t}\, dt
+\]
+ 
+این تعویض همیشه مجاز نیست. توجیه آن \textbf{قضیه همگرایی غالب لبگ} است:
+اگر تابعی مانند $h(t)$ انتگرال‌پذیر وجود داشته باشد به طوری که برای همه $\varepsilon$
+کوچک داشته باشیم $|g_\varepsilon(t)| \leq h(t)$، آنگاه تعویض مجاز است.
+ 
+اینجا می‌توان نشان داد $|g_\varepsilon(t)| \leq |{g_{\varepsilon_0}(t)}|$ برای
+$\varepsilon \geq \varepsilon_0 > 0$، و چون $g_{\varepsilon_0}$ انتگرال‌پذیر است،
+شرط قضیه برقرار می‌شود و تعویض مجاز است.
+ 
+% ── گام ۴: گرفتن حد ──────────────────────────────────────
+\section*{گام ۴ --- گرفتن حد و یافتن \textenglish{$\mathcal{F}\{\sgn(t)\}$}}
+ 
+با توجیه بالا، حد را داخل انتگرال می‌بریم. برای هر مقدار ثابت $\omega$:
+ 
+\[
+  \F{\sgn(t)}
+  = \lim_{\varepsilon \to 0^+} \frac{-2j\omega}{\varepsilon^2 + \omega^2}
+\]
+ 
+% ── نکته ۲: رفتار در امگا=0 ──────────────────────────────
+\subsection*{نکته: رفتار در $\omega = 0$}
+ 
+عبارت $\frac{-2j\omega}{\varepsilon^2 + \omega^2}$ برای هر $\varepsilon > 0$ در
+$\omega = 0$ کاملاً تعریف شده است:
+\[
+  \frac{-2j \cdot 0}{\varepsilon^2 + 0} = 0
+\]
+ 
+پس حد در این نقطه نیز وجود دارد و برابر صفر است:
+\[
+  \lim_{\varepsilon \to 0^+} \frac{-2j \cdot 0}{\varepsilon^2 + 0^2} = 0
+\]
+ 
+بنابراین نتیجه دقیق به صورت زیر است:
+\[
+  \F{\sgn(t)} =
+  \begin{cases}
+    \dfrac{2}{j\omega} & \omega \neq 0 \\[10pt]
+    0                  & \omega = 0
+  \end{cases}
+\]
+ 
+نوشتن این نتیجه به صورت فشرده $\frac{2}{j\omega}$ یک ضعف \textbf{نمادگذاری} است،
+نه ضعف اثبات --- چون در $\omega = 0$ مقدار تابع در حساب انتگرال‌های بعدی
+(روی مجموعه‌ای با اندازه لبگ صفر) تأثیری ندارد.
+ 
+برای $\omega \neq 0$:
+\[
+  \F{\sgn(t)}
+  = \frac{-2j\omega}{\omega^2}
+  = \frac{-2j}{\omega}
+  = \boxed{\frac{2}{j\omega}}
+\]
+ 
+% ── گام ۵ ─────────────────────────────────────────────────
+\section*{گام ۵ --- تبدیل فوریه عدد ثابت}
+ 
+از تعریف انتگرال فوریه در معنای توزیعی:
+\[
+  \F{1} = 2\pi\,\delta(\omega)
+  \quad\Longrightarrow\quad
+  \F{\tfrac{1}{2}} = \pi\,\delta(\omega)
+\]
+ 
+% ── گام ۶ ─────────────────────────────────────────────────
+\section*{گام ۶ --- ترکیب نهایی}
+ 
+\begin{align*}
+  \F{u(t)}
+  &= \frac{1}{2}\F{1} + \frac{1}{2}\F{\sgn(t)} \\[8pt]
+  &= \pi\,\delta(\omega) + \frac{1}{2} \cdot \frac{2}{j\omega} \\[8pt]
+  &= \pi\,\delta(\omega) + \frac{1}{j\omega}
+\end{align*}
+ 
+\[
+  \boxed{
+    \mathcal{F}\bigl\{u(t)\bigr\}
+    = \pi\,\delta(\omega) + \frac{1}{j\omega}
+  }
+\]

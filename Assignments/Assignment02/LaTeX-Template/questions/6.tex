@@ -1,95 +1,23 @@
-\[
-\text{بخش اول:}
-\]
+{بخش اول (سیستم سمت چپ):}
+\[v[n] = x[n] - \frac{1}{3}v[n-1] - \frac{1}{2}v[n-2] \implies V(e^{j\omega}) = \frac{X(e^{j\omega})}{1 + \frac{1}{3}e^{-j\omega} + \frac{1}{2}e^{-j2\omega}}\]
 
-اگر خروجی جمع‌کننده‌ی اول را \(w[n]\) بگیریم، داریم:
+\[w[n] = v[n] - \frac{1}{2}v[n-2] \implies W(e^{j\omega}) = V(e^{j\omega}) \left(1 - \frac{1}{2}e^{-j2\omega}\right)\]
 
-\[
-w[n]
-=
-x[n]
--\frac{1}{3}w[n-1]
--\frac{1}{2}w[n-2]
-\]
+\[H_1(e^{j\omega}) = \frac{W(e^{j\omega})}{X(e^{j\omega})} = \frac{1 - \frac{1}{2}e^{-j2\omega}}{1 + \frac{1}{3}e^{-j\omega} + \frac{1}{2}e^{-j2\omega}}\]
 
-در حوزه‌ی \(z\):
+{بخش دوم (سیستم سمت راست):}
+\[y[n] = w[n] - y[n-1] - 2y[n-3] \implies Y(e^{j\omega}) \left(1 + e^{-j\omega} + 2e^{-j3\omega}\right) = W(e^{j\omega})\]
 
-\[
-W(z)\left(1+\frac{1}{3}z^{-1}+\frac{1}{2}z^{-2}\right)=X(z)
-\]
+\[H_2(e^{j\omega}) = \frac{Y(e^{j\omega})}{W(e^{j\omega})} = \frac{1}{1 + e^{-j\omega} + 2e^{-j3\omega}}\]
 
-پس:
+{تابع انتقال کل سیستم:}
+\[H(e^{j\omega}) = H_1(e^{j\omega}) \cdot H_2(e^{j\omega}) = \frac{1 - \frac{1}{2}e^{-j2\omega}}{\left(1 + \frac{1}{3}e^{-j\omega} + \frac{1}{2}e^{-j2\omega}\right)\left(1 + e^{-j\omega} + 2e^{-j3\omega}\right)}\]
 
-\[
-\frac{W(z)}{X(z)}
-=
-\frac{1}
-{1+\frac{1}{3}z^{-1}+\frac{1}{2}z^{-2}}
-\]
+\[H(e^{j\omega}) = \frac{1 - \frac{1}{2}e^{-j2\omega}}{1 + \frac{4}{3}e^{-j\omega} + \frac{5}{6}e^{-j2\omega} + \frac{7}{3}e^{-j3\omega} + \frac{7}{6}e^{-j4\omega} + e^{-j5\omega}}\]
 
-خروجی بخش اول:
+{معادله تفاضلی سیستم:}
+\[y[n] + \frac{4}{3}y[n-1] + \frac{5}{6}y[n-2] + \frac{7}{3}y[n-3] + \frac{7}{6}y[n-4] + y[n-5] = x[n] - \frac{1}{2}x[n-2]\]
 
-\[
-Y_1(z)=W(z)-\frac{1}{2}z^{-2}W(z)
-\]
+{پاسخ ضربه بازگشتی ($h[n]$ به ازای $x[n] = \delta[n]$):}
+\[h[n] = \delta[n] - \frac{1}{2}\delta[n-2] - \frac{4}{3}h[n-1] - \frac{5}{6}h[n-2] - \frac{7}{3}h[n-3] - \frac{7}{6}h[n-4] - h[n-5]\]
 
-بنابراین:
-
-\[
-H_1(z)
-=
-\frac{Y_1(z)}{X(z)}
-=
-\frac{1-\frac{1}{2}z^{-2}}
-{1+\frac{1}{3}z^{-1}+\frac{1}{2}z^{-2}}
-\]
-
-\vspace{1cm}
-
-\[
-\text{بخش دوم:}
-\]
-
-اگر خروجی نهایی را \(Y(z)\) بگیریم:
-
-\[
-Y(z)
-=
-Y_1(z)
--z^{-1}Y(z)
--2z^{-3}Y(z)
-\]
-
-پس:
-
-\[
-Y(z)\left(1+z^{-1}+2z^{-3}\right)=Y_1(z)
-\]
-
-و در نتیجه:
-
-\[
-H_2(z)
-=
-\frac{Y(z)}{Y_1(z)}
-=
-\frac{1}{1+z^{-1}+2z^{-3}}
-\]
-
-\vspace{1cm}
-
-\[
-\boxed{
-H(z)=H_1(z)H_2(z)
-}
-\]
-
-\[
-\boxed{
-H(z)
-=
-\frac{1-\frac{1}{2}z^{-2}}
-{\left(1+\frac{1}{3}z^{-1}+\frac{1}{2}z^{-2}\right)
-\left(1+z^{-1}+2z^{-3}\right)}
-}
-\]

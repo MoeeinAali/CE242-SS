@@ -1,7 +1,5 @@
 % ==================== محاسبه‌ی ضرایب ====================
-\subsection*{محاسبه‌ی ضرایب $a_k$}
-
-دوره‌ی $T=4$، پس $\omega_0 = 2\pi/T = \pi/2$. ضریب $a_0$:
+دوره‌ $T=4$، پس $\omega_0 = 2\pi/T = \pi/2$. ضریب $a_0$:
 $$a_0 = \frac{1}{4}\int_{-2}^{2}\!\!\left(1-\frac{t^2}{2}\right)dt
 = \frac{1}{4}\left[t-\frac{t^3}{6}\right]_{-2}^{2}
 = \frac{1}{4}\left[4-\frac{8}{3}\right] = \frac{1}{3}$$
@@ -9,30 +7,39 @@ $$a_0 = \frac{1}{4}\int_{-2}^{2}\!\!\left(1-\frac{t^2}{2}\right)dt
 برای $k\neq 0$، چون $x(t)$ زوج است $a_k$ حقیقی است:
 $$a_k = \frac{1}{2}\int_0^2\!\!\left(1-\frac{t^2}{2}\right)\cos\!\left(\frac{k\pi t}{2}\right)dt$$
 
-با انتگرال‌گیری جزء‌به‌جزء دوبار و استفاده از $\sin(k\pi)=0$ و $\cos(k\pi)=(-1)^k$:
+با انتگرال‌گیری و محاسبه داریم:
 $$a_k = \frac{4(-1)^{k+1}}{k^2\pi^2}, \qquad k\neq 0$$
 
 % ==================== بند اول ====================
-\subsection*{$\displaystyle\sum_{k=-\infty}^{+\infty} j^k a_k$}
+\subsectionaddtolist{الف}
+
+\[
+\displaystyle\sum_{k=-\infty}^{+\infty} j^k a_k
+\]
 
 از آنجا که $j = e^{j\pi/2}$، داریم $j^k = e^{jk(\pi/2)\cdot 1}$. با قراردادن $t=1$ در سری فوریه:
 $$\sum_{k=-\infty}^{+\infty} j^k a_k
-= \sum_{k=-\infty}^{+\infty} a_k\,e^{jk\frac{\pi}{2}\cdot 1} = x(1)$$
-
-چون $t=1$ درون بازه‌ی $(-2,2)$ است و تابع پیوسته است:
-$$\boxed{\sum_{k=-\infty}^{+\infty} j^k a_k = x(1) = 1 - \frac{1}{2} = \frac{1}{2}}$$
+= \sum_{k=-\infty}^{+\infty} a_k\,e^{jk\frac{\pi}{2}\cdot 1} = x(1) 1 - \frac{1}{2} = \frac{1}{2}$$
 
 % ==================== بند دوم ====================
-\subsection*{$\displaystyle\sum_{k=-\infty}^{+\infty} (-1)^k a_k$}
+\subsectionaddtolist{ب}
+
+\[
+\displaystyle\sum_{k=-\infty}^{+\infty} (-1)^k a_k
+\]
 
 از آنجا که $(-1)^k = e^{jk\pi} = e^{jk(\pi/2)\cdot 2}$، با قراردادن $t=2$ در سری فوریه:
 $$\sum_{k=-\infty}^{+\infty}(-1)^k a_k = x(2)$$
 
 در مرز $t=2$، چون $x(2^-)=1-\frac{4}{2}=-1$ و $x(-2^+)=1-\frac{4}{2}=-1$، تابع پیوسته است:
-$$\boxed{\sum_{k=-\infty}^{+\infty}(-1)^k a_k = x(2) = 1 - \frac{4}{2} = -1}$$
+$${\sum_{k=-\infty}^{+\infty}(-1)^k a_k = x(2) = 1 - \frac{4}{2} = -1}$$
 
 % ==================== بند سوم ====================
-\subsection*{$\displaystyle\sum_{k=-\infty}^{+\infty} |a_k|^2$}
+\subsectionaddtolist{ج}
+
+\[
+\displaystyle\sum_{k=-\infty}^{+\infty} |a_k|^2
+\]
 
 با قضیه‌ی پارسوال:
 $$\sum_{k=-\infty}^{+\infty}|a_k|^2
@@ -43,21 +50,21 @@ $$= \frac{1}{2}\left[t-\frac{t^3}{3}+\frac{t^5}{20}\right]_0^2
 = \frac{1}{2}\left[2-\frac{8}{3}+\frac{32}{20}\right]
 = \frac{1}{2}\left[\frac{30-40+24}{15}\right]$$
 
-$$\boxed{\sum_{k=-\infty}^{+\infty}|a_k|^2 = \frac{1}{2}\cdot\frac{14}{15} = \frac{7}{15}}$$
+$${\sum_{k=-\infty}^{+\infty}|a_k|^2 = \frac{1}{2}\cdot\frac{14}{15} = \frac{7}{15}}$$
 
 % ==================== بند چهارم ====================
-\subsection*{$\displaystyle\sum_{k=-\infty}^{+\infty} a_{2k}$}
+\subsectionaddtolist{د}
+\[
+\displaystyle\sum_{k=-\infty}^{+\infty} a_{2k}
+\]
 
-سیگنال $z(t) = \dfrac{x(t)+x(t+2)}{2}$ را تعریف می‌کنیم. ضرایب فوریه‌ی آن (با دوره‌ی $4$):
-$$\text{ضریب }k \text{ سیگنال }z = \frac{a_k(1+(-1)^k)}{2}
+سیگنال $z(t) = \dfrac{x(t)+x(t+2)}{2}$ را تعریف می‌کنیم. ضرایب فوریه‌ی آن:
+$$\frac{a_k(1+(-1)^k)}{2}
 = \begin{cases}a_k & k \text{ زوج}\\0 & k \text{ فرد}\end{cases}$$
 
-بنابراین سری فوریه‌ی $z(t)$ با فرکانس پایه‌ی $e^{j\pi t}$ (دوره‌ی ۲):
+بنابراین سری فوریه‌ی $z(t)$ با فرکانس پایه‌ی $e^{j\pi t}$:
 $$z(t) = \sum_{k=-\infty}^{+\infty}a_{2k}\,e^{jk\pi t}
 \quad\Longrightarrow\quad
-\sum_{k=-\infty}^{+\infty}a_{2k} = z(0)$$
+\sum_{k=-\infty}^{+\infty}a_{2k} = z(0) = \frac{x(0)+x(2)}{2} = \frac{1+(-1)}{2} = 0$$
 
-محاسبه‌ی $z(0)$:
-$$z(0) = \frac{x(0)+x(2)}{2} = \frac{1+(-1)}{2} = 0$$
-
-$$\boxed{\sum_{k=-\infty}^{+\infty}a_{2k} = 0}$$
+$${\sum_{k=-\infty}^{+\infty}a_{2k} = 0}$$

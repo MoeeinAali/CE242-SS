@@ -1,0 +1,169 @@
+\subsectionaddtolist{الف}
+اگر $x[n]$ را با دورهٔ $2N$ در نظر بگیریم، فرکانس پایه جدید برابر است با
+\[
+\omega_0'=\frac{2\pi}{2N}=\frac{\pi}{N}
+\]
+پس
+\[
+x[n]
+=\sum_{k=\langle N\rangle} a_k e^{jk(2\pi/N)n}
+=\sum_{k=\langle N\rangle} a_k e^{j(2k)(\pi/N)n}
+\]
+بنابراین ضرایب سری فوریهٔ جدید برابرند با
+\[
+b_m=
+\begin{cases}
+a_{m/2}, & m \ \text{زوج},\\
+0, & m \ \text{فرد}
+\end{cases}
+\]
+
+\bigskip
+
+\subsectionaddtolist{ب}
+\[
+y[n]=x[n]-x[n-1]
+\]
+داریم
+\[
+x[n-1]
+=\sum_{k} a_k e^{jk\omega_0(n-1)}
+=\sum_k a_k e^{-jk\omega_0}e^{jk\omega_0 n}
+\]
+پس
+\[
+y[n]
+=\sum_k a_k\left(1-e^{-jk\omega_0}\right)e^{jk\omega_0 n}
+\]
+بنابراین ضرایب جدید:
+\[
+b_k=a_k\left(1-e^{-jk\omega_0}\right)
+\]
+
+\bigskip
+
+\subsectionaddtolist{پ}
+
+\[
+y[n]=x[n]-x\!\left[n-\frac{N}{2}\right]
+\]
+داریم:
+\[
+x\!\left[n-\frac{N}{2}\right]
+=\sum_k a_k e^{jk\omega_0 n}e^{-jk\omega_0 N/2}
+\]
+ولی:
+\[
+e^{-jk\omega_0 N/2}
+=e^{-jk\pi}
+=(-1)^k
+\]
+پس:
+\[
+y[n]
+=\sum_k a_k\left(1-(-1)^k\right)e^{jk\omega_0 n}
+\]
+بنابراین:
+\[
+b_k=a_k\left(1-(-1)^k\right)
+=
+\begin{cases}
+0, & k \text{ زوج}\\
+2a_k, & k \text{ فرد}
+\end{cases}
+\]
+
+\bigskip
+
+\subsectionaddtolist{ت}
+
+\[
+y[n]=x[n]+x\!\left[n+\frac{N}{2}\right]
+\]
+داریم:
+\[
+x\!\left[n+\frac{N}{2}\right]
+=\sum_k a_k e^{jk\omega_0 n}e^{jk\pi}
+=\sum_k a_k(-1)^k e^{jk\omega_0 n}
+\]
+پس:
+\[
+y[n]
+=\sum_k a_k\left(1+(-1)^k\right)e^{jk\omega_0 n}
+\]
+بنابراین:
+\[
+b_k=a_k\left(1+(-1)^k\right)
+=
+\begin{cases}
+2a_k, & k \text{ زوج}\\
+0, & k \text{ فرد}
+\end{cases}
+\]
+
+\bigskip
+
+\subsectionaddtolist{ث}
+\[
+y[n]=x^*[-n]
+\]
+داریم:
+\[
+x[-n]
+=\sum_k a_k e^{-jk\omega_0 n}
+\]
+با مزدوج مختلط:
+\[
+y[n]
+=\sum_k a_k^* e^{jk\omega_0 n}
+\]
+پس ضرایب سری فوریه:
+\[
+b_k=a_k^*.
+\]
+
+\bigskip
+
+\subsectionaddtolist{ج}
+\[
+y[n]=
+\begin{cases}
+x[n], & n=2m\\
+0, & n=2m+1
+\end{cases}
+\]
+این سیگنال را می‌توان به صورت
+\[
+y[n]=\frac{1+(-1)^n}{2}\,x[n]
+\]
+نوشت، زیرا
+\[
+\frac{1+(-1)^n}{2}
+=
+\begin{cases}
+1, & n \text{ زوج}\\
+0, & n \text{ فرد}
+\end{cases}
+\]
+اکنون
+\[
+(-1)^n=e^{j\pi n}=e^{j(N/2)\omega_0 n}
+\]
+پس
+\[
+y[n]
+=\frac12 x[n]+\frac12 e^{j(N/2)\omega_0 n}x[n]
+\]
+اگر
+\[
+x[n]=\sum_k a_k e^{jk\omega_0 n}
+\]
+آنگاه
+\[
+e^{j(N/2)\omega_0 n}x[n]
+=\sum_k a_k e^{j(k+N/2)\omega_0 n}
+\]
+بنابراین ضرایب جدید:
+\[
+b_k=\frac12 a_k+\frac12 a_{k-N/2}
+\]

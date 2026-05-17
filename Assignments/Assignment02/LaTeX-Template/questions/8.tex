@@ -1,0 +1,73 @@
+% سوال ۸ — پاسخ فرکانسی و پاسخ ضربه‌ای
+
+از هر دو معادله تبدیل $z$ می‌گیریم:
+
+\begin{align}
+Y(z)\!\left(1 + \tfrac{1}{4}z^{-1}\right) + W(z)\!\left(1 + \tfrac{1}{2}z^{-1}\right) &= \tfrac{2}{3}X(z) \label{eq8:1}\\[4pt]
+Y(z)\!\left(1 - \tfrac{5}{4}z^{-1}\right) + W(z)\!\cdot 2\!\left(1 - z^{-1}\right) &= -\tfrac{5}{3}X(z) \label{eq8:2}
+\end{align}
+
+\subsection*{حذف $W(z)$ و به‌دست آوردن $H(z)$}
+
+برای حذف $W(z)$، معادله‌ی اول را در عدد $2(1-z^{-1})$ و معادله‌ی دوم را در $(1+\tfrac{1}{2}z^{-1})$ ضرب کرده و تفریق می‌کنیم.
+به‌طور معادل می‌توانیم از قاعده کرامر استفاده کنیم.
+
+\paragraph{دترمینان ضرایب:}
+\begin{align*}
+D &= \left(1 + \tfrac{1}{4}z^{-1}\right)\cdot 2\!\left(1 - z^{-1}\right)
+   - \left(1 + \tfrac{1}{2}z^{-1}\right)\!\left(1 - \tfrac{5}{4}z^{-1}\right)\\
+  &= \left(2 - \tfrac{3}{2}z^{-1} - \tfrac{1}{2}z^{-2}\right)
+   - \left(1 - \tfrac{3}{4}z^{-1} - \tfrac{5}{8}z^{-2}\right)\\
+  &= 1 - \tfrac{3}{4}z^{-1} + \tfrac{1}{8}z^{-2}
+\end{align*}
+
+\paragraph{صورت کسر برای $Y(z)$:}
+\begin{align*}
+N_Y &= \tfrac{2}{3}X(z)\cdot 2\!\left(1-z^{-1}\right)
+     - \left(1+\tfrac{1}{2}z^{-1}\right)\cdot\!\left(-\tfrac{5}{3}X(z)\right)\\
+    &= X(z)\!\left[\tfrac{4}{3}\!\left(1-z^{-1}\right) + \tfrac{5}{3}\!\left(1+\tfrac{1}{2}z^{-1}\right)\right]\\
+    &= X(z)\!\left[3 - \tfrac{1}{2}z^{-1}\right]
+\end{align*}
+
+بنابراین تابع سیستم:
+\[
+\boxed{H(z) = \frac{Y(z)}{X(z)} = \frac{3 - \tfrac{1}{2}z^{-1}}{1 - \tfrac{3}{4}z^{-1} + \tfrac{1}{8}z^{-2}}}
+\]
+
+\subsection*{پاسخ فرکانسی}
+
+مخرج را تجزیه می‌کنیم:
+\[
+1 - \tfrac{3}{4}z^{-1} + \tfrac{1}{8}z^{-2}
+= \left(1 - \tfrac{1}{2}z^{-1}\right)\!\left(1 - \tfrac{1}{4}z^{-1}\right)
+\]
+
+هر دو قطب در داخل دایره‌ی واحد قرار دارند ($|z|=\tfrac{1}{2}$ و $|z|=\tfrac{1}{4}$)، پس سیستم پایدار و علّی است.
+پاسخ فرکانسی با جایگذاری $z = e^{j\omega}$:
+
+\[
+\boxed{H(e^{j\omega}) = \frac{3 - \tfrac{1}{2}e^{-j\omega}}{\left(1 - \tfrac{1}{2}e^{-j\omega}\right)\!\left(1 - \tfrac{1}{4}e^{-j\omega}\right)}}
+\]
+
+\subsection*{پاسخ ضربه‌ای}
+
+بسط کسری جزئی:
+\[
+H(z) = \frac{A}{1 - \tfrac{1}{2}z^{-1}} + \frac{B}{1 - \tfrac{1}{4}z^{-1}}
+\]
+
+\[
+A + B = 3, \qquad -\tfrac{1}{4}A - \tfrac{1}{2}B = -\tfrac{1}{2}
+\]
+
+از این دستگاه: $A = 4,\; B = -1$.
+
+\[
+H(z) = \frac{4}{1 - \tfrac{1}{2}z^{-1}} - \frac{1}{1 - \tfrac{1}{4}z^{-1}}
+\]
+
+با تبدیل $z$ معکوس (برای سیستم علّی):
+
+\[
+\boxed{h[n] = \left[4\!\left(\tfrac{1}{2}\right)^n - \left(\tfrac{1}{4}\right)^n\right]u[n]}
+\]

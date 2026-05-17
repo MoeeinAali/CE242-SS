@@ -1,0 +1,53 @@
+% سوال ۹ — اثبات صفر بودن ضرایب DFS برای مضارب $m$
+
+\subsection*{تعریف‌ها}
+
+فرض کنید $P = N/m$ (چون $m \mid N$، این عدد صحیح است).
+شرط داده‌شده به صورت زیر است:
+\[
+\sum_{r=0}^{P-1} x\!\left[n + rP\right] = 0 \qquad \forall\, n
+\]
+
+ضرایب DFS برابرند با:
+\[
+a_k = \frac{1}{N}\sum_{n=0}^{N-1} x[n]\, e^{-j2\pi kn/N}
+\]
+
+می‌خواهیم نشان دهیم که برای هر $k = lm$ (یعنی هر $k$ که مضرب $m$ باشد) داریم $a_{lm} = 0$.
+
+\subsection*{اثبات}
+
+با جایگذاری $k = lm$ و استفاده از $P = N/m$:
+\[
+a_{lm} = \frac{1}{N}\sum_{n=0}^{N-1} x[n]\, e^{-j2\pi lmn/N}
+= \frac{1}{N}\sum_{n=0}^{N-1} x[n]\, e^{-j2\pi ln/P}
+\]
+
+\paragraph{نکته‌ی کلیدی:} تابع نمایی $e^{-j2\pi ln/P}$ دوره‌ای با دوره $P$ است، یعنی:
+\[
+e^{-j2\pi l(n+P)/P} = e^{-j2\pi ln/P}\cdot \underbrace{e^{-j2\pi l}}_{=1} = e^{-j2\pi ln/P}
+\]
+
+بنابراین برای هر عدد صحیح $r$، با جابه‌جایی $n \to n+rP$ در سری (و با استفاده از تناوبی بودن $x[n]$ با دوره $N$):
+\[
+a_{lm}
+= \frac{1}{N}\sum_{n=0}^{N-1} x[n+rP]\, e^{-j2\pi l(n+rP)/P}
+= \frac{1}{N}\sum_{n=0}^{N-1} x[n+rP]\, e^{-j2\pi ln/P}
+\]
+
+\paragraph{جمع‌بندی روی $r$:}
+با جمع گرفتن از $r=0$ تا $r=P-1$ (هر طرف):
+\[
+P \cdot N \cdot a_{lm}
+= \sum_{r=0}^{P-1}\sum_{n=0}^{N-1} x[n+rP]\, e^{-j2\pi ln/P}
+= \sum_{n=0}^{N-1} e^{-j2\pi ln/P}
+  \underbrace{\sum_{r=0}^{P-1} x[n+rP]}_{=\,0}
+= 0
+\]
+
+چون $P \cdot N \neq 0$، نتیجه می‌گیریم:
+\[
+\boxed{a_{lm} = 0 \qquad \forall\, l \in \mathbb{Z}}
+\]
+
+یعنی ضریب $a_k$ برای هر $k$ که بر $m$ بخش‌پذیر باشد، برابر صفر است. $\blacksquare$

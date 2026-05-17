@@ -1,0 +1,93 @@
+\subsectionaddtolist{الف}
+
+\[
+c_n=\frac1T\int_0^T x(t)e^{-jn\omega_0 t}dt
+\]
+
+برای \(n\neq0\):
+
+\[
+c_n=
+\frac1T
+\left(
+\int_0^{t_1} e^{-jn\omega_0 t}dt
+-2\int_{t_1}^{T} e^{-jn\omega_0 t}dt
+\right)
+\]
+
+\[
+c_n=
+\frac{3}{j2\pi n}
+\left(
+1-e^{-j\frac{2\pi n}{T}t_1}
+\right)
+,\qquad n\neq0
+\]
+
+و جمله‌ی DC :
+
+\[
+c_0=
+\frac1T
+\left(
+t_1-2(T-t_1)
+\right)
+\]
+
+\[
+c_0=
+\frac{3t_1-2T}{T}
+\]
+
+\subsectionaddtolist{ب}
+
+\[
+c_n=
+\frac{3}{2\pi n}
+\sin\left(\frac{2\pi n t_1}{T}\right)
+-j\frac{3}{2\pi n}
+\left(
+1-\cos\left(\frac{2\pi n t_1}{T}\right)
+\right)
+\]
+
+پس:
+
+\[
+c_n^{(e)}=
+\frac{3}{2\pi n}
+\sin\left(\frac{2\pi n t_1}{T}\right)
+\]
+
+\[
+c_n^{(o)}=
+-j\frac{3}{2\pi n}
+\left(
+1-\cos\left(\frac{2\pi n t_1}{T}\right)
+\right)
+\]
+
+\subsectionaddtolist{ج}
+
+طبق رابطه‌ی پارسوال:
+
+\[
+\sum_{n=-\infty}^{\infty}|c_n|^2
+=
+\frac1T\int_0^T |x(t)|^2dt
+\]
+
+\[
+=
+\frac1T
+\left(
+\int_0^{t_1}1\,dt
++
+\int_{t_1}^{T}4\,dt
+\right)
+\]
+
+\[
+=
+\frac{4T-3t_1}{T}
+\]

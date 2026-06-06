@@ -1,0 +1,40 @@
+\subsectionaddtolist{الف}
+پاسخ فرکانسی فیلتر گوسی برابر است با:
+\[ X(j\omega) = e^{-\frac{\omega^2}{2}} \]
+با استفاده از فرمول انتگرال معکوس تبدیل فوریه داریم:
+\[ x(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} X(j\omega) e^{j\omega t} d\omega = \frac{1}{2\pi} \int_{-\infty}^{+\infty} e^{-\frac{\omega^2}{2}} e^{j\omega t} d\omega \]
+برای حل انتگرال فوق، توان‌های پایه $e$ را ترکیب کرده و با روش کامل کردن مربع ساده می‌کنیم:
+\[ -\frac{\omega^2}{2} + j\omega t = -\frac{1}{2}\left( \omega^2 - 2j\omega t \right) \]
+با اضافه و کم کردن جمله $(jt)^2 = -t^2$ داخل پرانتز، عبارت به شکل زیر در می‌آید:
+\[ \omega^2 - 2j\omega t = (\omega - jt)^2 - (jt)^2 = (\omega - jt)^2 + t^2 \]
+بنابراین توان کل برابر است با:
+\[ -\frac{1}{2}\left[ (\omega - jt)^2 + t^2 \right] = -\frac{(\omega - jt)^2}{2} - \frac{t^2}{2} \]
+با جایگذاری این عبارت در انتگرال:
+\[ x(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} e^{-\frac{(\omega - jt)^2}{2}} e^{-\frac{t^2}{2}} d\omega = \frac{1}{2\pi} e^{-\frac{t^2}{2}} \int_{-\infty}^{+\infty} e^{-\frac{(\omega - jt)^2}{2}} d\omega \]
+با فرض تغییر متغیر $u = \frac{\omega - jt}{\sqrt{2}}$ که نتیجه می‌دهد $d\omega = \sqrt{2}du$، بخش انتگرالی تبدیل به انتگرال معروف گاوسی می‌شود:
+\[ \int_{-\infty}^{+\infty} e^{-\frac{(\omega - jt)^2}{2}} d\omega = \sqrt{2} \int_{-\infty}^{+\infty} e^{-u^2} du = \sqrt{2}\sqrt{\pi} = \sqrt{2\pi} \]
+در نتیجه، سیگنال زمان $x(t)$ به دست می‌آید:
+\[ x(t) = \frac{1}{2\pi} e^{-\frac{t^2}{2}} \cdot \sqrt{2\pi} = \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} \]
+
+\subsectionaddtolist{ب}
+ابتدا مجذور اندازه پاسخ فرکانسی را محاسبه می‌کنیم:
+\[ |X(j\omega)|^2 = \left( e^{-\frac{\omega^2}{2}} \right)^2 = e^{-\omega^2} \]
+مقدار ماکزیمم این تابع در فرکانس صفر رخ می‌دهد:
+\[ |X(0)|^2 = e^0 = 1 \]
+طبق تعریف، پهنای باند $B$ فرکانسی است که در آن مقدار به اندازه $\frac{1}{e}$ افت کند:
+\[ |X(jB)|^2 = \frac{1}{e} |X(0)|^2 \implies e^{-B^2} = \frac{1}{e} \cdot 1 = e^{-1} \]
+با مساوی قرار دادن توان‌ها نتیجه می‌گیریم:
+\[ B^2 = 1 \implies B = 1 \text{ rad/s} \]
+
+\subsectionaddtolist{ج}
+مجذور اندازه سیگنال در حوزه زمان برابر است با:
+\[ |x(t)|^2 = \left( \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} \right)^2 = \frac{1}{2\pi} e^{-t^2} \]
+مقدار ماکزیمم در زمان صفر برابر است با:
+\[ |x(0)|^2 = \frac{1}{2\pi} \]
+مدت زمان مؤثر $T$ فرکانس لبه‌ای است که در آن مقدار سیگنال به اندازه $\frac{1}{e}$ ماکزیمم افت می‌کند:
+\[ |x(T)|^2 = \frac{1}{e} |x(0)|^2 \implies \frac{1}{2\pi} e^{-T^2} = \frac{1}{e} \cdot \frac{1}{2\pi} \]
+با ساده کردن ضریب $\frac{1}{2\pi}$ از طرفین:
+\[ e^{-T^2} = e^{-1} \implies T^2 = 1 \implies T = 1 \text{ s} \]
+در نهایت حاصل‌ضرب پهنای باند در زمان مؤثر برابر است با:
+\[ B \cdot T = 1 \times 1 = 1 \]
+این مقدار ثابت تاییدکننده \textbf{اصل عدم قطعیت} در پردازش سیگنال است.

@@ -1,0 +1,61 @@
+معادله دیفرانسیل داده‌شده به صورت زیر است:
+\begin{equation*}
+y'(t) + a \cdot y(t) = b \cdot x(t)
+\end{equation*}
+
+\subsectionaddtolist{الف}
+با اعمال تبدیل فوریه به دو طرف معادله دیفرانسیل و استفاده از خاصیت مشتق‌گیری داریم:
+\begin{equation*}
+j\omega Y(\omega) + a Y(\omega) = b X(\omega) \implies (j\omega + a) Y(\omega) = b X(\omega)
+\end{equation*}
+تابع تبدیل سیستم $H(\omega)$ به صورت زیر تعریف می‌شود:
+\begin{equation*}
+H(\omega) = \frac{Y(\omega)}{X(\omega)} = \frac{b}{j\omega + a}
+\end{equation*}
+با گرفتن تبدیل فوریه معکوس، پاسخ ضربه در حوزه زمان (با فرض $a > 0$) برابر است با:
+\begin{equation*}
+h(t) = \mathcal{F}^{-1}\left\{ \frac{b}{j\omega + a} \right\} = b \cdot e^{-at} u(t)
+\end{equation*}
+
+\subsectionaddtolist{ب}
+پاسخ ضربه در حوزه فرکانس همان تابع تبدیل $H(\omega)$ است:
+\begin{equation*}
+H(\omega) = \frac{b}{j\omega + a}
+\end{equation*}
+ {اندازه:}
+    \begin{equation*}
+    |H(\omega)| = \frac{|b|}{\sqrt{\omega^2 + a^2}}
+    \end{equation*}
+    {فاز:}
+    \begin{equation*}
+    \angle H(\omega) = \angle b - \tan^{-1}\left(\frac{\omega}{a}\right)
+    \end{equation*}
+    (با فرض $b>0$ فاز برابر با $-\tan^{-1}(\frac{\omega}{a})$ خواهد بود).
+
+\subsectionaddtolist{ج}
+پاسخ پله از انتگرال‌گیری پاسخ ضربه در حوزه زمان به دست می‌آید:
+\begin{equation*}
+s(t) = \int_{0}^{t} b \cdot e^{-a\tau} d\tau = \left[ -\frac{b}{a} e^{-a\tau} \right]_{0}^{t} = \frac{b}{a} \left(1 - e^{-at}\right) u(t)
+\end{equation*}
+بررسی حد در بی‌نهایت:
+\begin{equation*}
+\lim_{t \to \infty} s(t) = \lim_{t \to \infty} \frac{b}{a} \left(1 - e^{-at}\right) = \frac{b}{a}
+\end{equation*}
+
+\subsectionaddtolist{د}
+طبق قانون ولتاژ کیرشهف در مدار RC متوالی سری:
+\begin{equation*}
+x(t) = R \cdot i(t) + y(t)
+\end{equation*}
+از آنجا که جریان خازن برابر است با $i(t) = C \frac{dy(t)}{dt}$، داریم:
+\begin{equation*}
+x(t) = RC \frac{dy(t)}{dt} + y(t)
+\end{equation*}
+با تقسیم طرفین بر $RC$ جهت هم‌فرم کردن با معادله اصلی:
+\begin{equation*}
+y'(t) + \frac{1}{RC} y(t) = \frac{1}{RC} x(t)
+\end{equation*}
+با مقایسه این رابطه با معادله دیفرانسیل صورت سؤال، مقادیر $a$ و $b$ به دست می‌آیند:
+\begin{equation*}
+a = \frac{1}{RC} , \quad b = \frac{1}{RC}
+\end{equation*}

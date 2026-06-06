@@ -1,0 +1,69 @@
+\subsectionaddtolist{الف}
+مطابق صورت سؤال، رابطه تبدیل هیلبرت برای بخش موهومی به صورت زیر تعریف شده است:
+\[
+H_I(j\omega) = -\frac{1}{\pi} \int_{-\infty}^{\infty} \frac{H_R(j\eta)}{\omega - \eta} d\eta
+\]
+با جایگذاری تابع داده شده $H_R(j\omega) = \frac{1}{1+\omega^2}$ در فرمول بالا، انتگرال به فرم زیر در می‌آید:
+\[
+H_I(j\omega) = -\frac{1}{\pi} \int_{-\infty}^{\infty} \frac{1}{(1+\eta^2)(\omega - \eta)} d\eta = \frac{1}{\pi} \int_{-\infty}^{\infty} \frac{1}{(\eta^2+1)(\eta - \omega)} d\eta
+\]
+برای حل این انتگرال، از روش تجزیه کسرهای جزئی نسبت به متغیر $\eta$ استفاده می‌کنیم. کسر درون انتگرال را می‌توان به صورت زیر تفکیک کرد:
+\[
+\frac{1}{(\eta - j)(\eta + j)(\eta - \omega)} = \frac{A}{\eta - j} + \frac{B}{\eta + j} + \frac{C}{\eta - \omega}
+\]
+با محاسبه ضرایب به روش مانده‌ها (Residue) :
+\begin{align*}
+A &= \lim_{\eta \to j} \frac{1}{(\eta + j)(\eta - \omega)} = \frac{1}{2j(j - \omega)} = \frac{1}{-2 - 2j\omega} = -\frac{1}{2(1+j\omega)} \\
+B &= \lim_{\eta \to -j} \frac{1}{(\eta - j)(\eta - \omega)} = \frac{1}{-2j(-j - \omega)} = \frac{1}{-2 + 2j\omega} = -\frac{1}{2(1-j\omega)} \\
+C &= \lim_{\eta \to \omega} \frac{1}{\eta^2 + 1} = \frac{1}{1 + \omega^2}
+\end{align*}
+بنابراین با محاسبه مقدار اصلی کوشی برای قطب روی محور حقیقی ($\eta = \omega$) و انتگرال‌گیری روی نیم‌صفحه بالایی (قطب $\eta = j$)، حاصل انتگرال فوق برابر می‌شود با:
+\[
+\int_{-\infty}^{\infty} \frac{1}{(\eta^2+1)(\eta - \omega)} d\eta = -\frac{\pi \omega}{1+\omega^2}
+\]
+با ضرب این حاصل در ضریب پشت انتگرال یعنی $\frac{1}{\pi}$، پاسخ نهایی بخش الف به دست می‌آید:
+\[
+H_I(j\omega) = \frac{1}{\pi} \left( -\frac{\pi \omega}{1+\omega^2} \right) = -\frac{\omega}{1+\omega^2}
+\]
+
+\subsectionaddtolist{ب}
+تابع پاسخ فرکانسی سیستم از مجموع بخش حقیقی و موهومی به صورت $H(j\omega) = H_R(j\omega) + j H_I(j\omega)$ پدید می‌آید. با جایگذاری مقادیر به دست آمده:
+\[
+H(j\omega) = \frac{1}{1+\omega^2} + j \left( -\frac{\omega}{1+\omega^2} \right) = \frac{1 - j\omega}{1+\omega^2}
+\]
+اتحاد مخرج کسر را در مختلط باز می‌کنیم: $1+\omega^2 = (1+j\omega)(1-j\omega)$. با جایگذاری این عبارت در مخرج:
+\[
+H(j\omega) = \frac{1 - j\omega}{(1+j\omega)(1-j\omega)}
+\]
+با ساده کردن عبارت $(1-j\omega)$ از صورت و مخرج، پاسخ فرکانسی ساده‌شده سیستم به صورت زیر به دست می‌آید:
+\[
+H(j\omega) = \frac{1}{1+j\omega}
+\]
+حال برای یافتن پاسخ ضربه $h(t)$، باید تبدیل فوریه معکوس بگیریم:
+\[
+\mathcal{F} \left\{ e^{-at} u(t) \right\} = \frac{1}{a + j\omega} \quad \text{ \ \ \  for } \text{Re}\{a\} > 0
+\]
+با قرار دادن $a=1$ در این رابطه، معکوس تبدیل فوریه دقیقاً برابر خواهد بود با:
+\[
+h(t) = \mathcal{F}^{-1} \left\{ \frac{1}{1+j\omega} \right\} = e^{-t} u(t)
+\]
+این پاسخ ضربه کاملاً با فرض علی بودن سیستم ($h(t) = 0$ برای $t < 0$) همخوانی دارد.
+
+\subsectionaddtolist{ج}
+یک سیستم LTI پایدار در حس خروجی کران‌دار به ازای ورودی کران‌دار است اگر و تنها اگر پاسخ ضربه آن مطلقاً انتگرال‌پذیر باشد؛ یعنی شرط زیر برقرار باشد:
+\[
+I = \int_{-\infty}^{\infty} |h(t)| dt < \infty
+\]
+با جایگذاری $h(t) = e^{-t} u(t)$ در انتگرال فوق، به دلیل وجود تابع پله $u(t)$، کران پایین انتگرال به صفر تغییر می‌کند:
+\[
+I = \int_{0}^{\infty} |e^{-t}| dt = \int_{0}^{\infty} e^{-t} dt
+\]
+با محاسبه انتگرال عبارت فوق داریم:
+\[
+I = \left[ -e^{-t} \right]_{0}^{\infty} = \left( \lim_{t \to \infty} -e^{-t} \right) - \left( -e^{-0} \right)
+\]
+از آنجا که $\lim_{t \to \infty} e^{-t} = 0$ و $e^0 = 1$ است:
+\[
+I = 0 - (-1) = 1
+\]
+چون مقدار انتگرال برابر با $1$ شده و این مقدار یک عدد حقیقی، قطعی و کمتر از بی‌نهایت است ($1 < \infty$)، شرط پایداری مطلق برقرار است. بنابراین {سیستم پایدار است}.

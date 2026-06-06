@@ -1,0 +1,171 @@
+\subsectionaddtolist{الف}
+
+سیگنال خروجی ضرب‌کنندهٔ اول برابر است با:
+
+\[
+v(t)=x(t)\cos(\omega_c t+\theta)
+\]
+
+با استفاده از رابطهٔ
+
+\[
+\cos(\omega_c t+\theta)
+=
+\frac12 e^{j(\omega_c t+\theta)}
++\frac12 e^{-j(\omega_c t+\theta)}
+\]
+
+و خاصیت مدولاسیون
+
+\[
+x(t)e^{j\omega_0 t}
+\;\longleftrightarrow\;
+X\!\big(j(\omega-\omega_0)\big)
+\]
+
+خواهیم داشت
+
+\[
+V(j\omega)
+=
+\frac12 e^{j\theta}
+X\!\big(j(\omega-\omega_c)\big)
++
+\frac12 e^{-j\theta}
+X\!\big(j(\omega+\omega_c)\big)
+\]
+
+از آنجا که فیلتر پایین‌گذر ایده‌آل دارای بهرهٔ \(2\) در باند عبور است و پهنای باند سیگنال از \(\omega_0\) کمتر است، خروجی فیلتر برابر می‌شود با
+
+\[
+W(j\omega)
+=
+e^{j\theta}
+X\!\big(j(\omega-\omega_c)\big)
++
+e^{-j\theta}
+X\!\big(j(\omega+\omega_c)\big)
+\]
+
+اکنون
+
+\[
+y(t)=w(t)\cos(\omega_c t)
+\]
+
+و در نتیجه
+
+\[
+Y(j\omega)
+=
+\frac12
+W\!\big(j(\omega-\omega_c)\big)
++
+\frac12
+W\!\big(j(\omega+\omega_c)\big)
+\]
+
+با جایگذاری \(W(j\omega)\):
+
+\[
+\begin{aligned}
+Y(j\omega)
+=&\;
+\frac12 e^{j\theta}X(j\omega)
++\frac12 e^{-j\theta}X\!\big(j(\omega-2\omega_c)\big)
+\\
+&+
+\frac12 e^{j\theta}X\!\big(j(\omega+2\omega_c)\big)
++\frac12 e^{-j\theta}X(j\omega)
+\end{aligned}
+\]
+
+بنابراین:
+
+\[
+{
+Y(j\omega)
+=
+\cos\theta\,X(j\omega)
++
+\frac12 e^{-j\theta}
+X\!\big(j(\omega-2\omega_c)\big)
++
+\frac12 e^{j\theta}
+X\!\big(j(\omega+2\omega_c)\big)
+}.
+\]
+
+\subsectionaddtolist{ب}
+
+اگر \(\theta=0\) باشد، رابطهٔ بالا به صورت
+
+\[
+Y(j\omega)
+=
+X(j\omega)
++
+\frac12 X\!\big(j(\omega-2\omega_c)\big)
++
+\frac12 X\!\big(j(\omega+2\omega_c)\big)
+\]
+
+درمی‌آید.
+
+اگر پهنای باند سیگنال \(B\) باشد و شرط
+\(
+B<\omega_c
+\)
+برقرار باشد، مؤلفه‌های منتقل‌شده به \(\pm 2\omega_c\) با طیف اصلی هم‌پوشانی نخواهند داشت. در نتیجه در ناحیهٔ باند پایه خواهیم داشت:
+
+\[
+Y(j\omega)=X(j\omega)
+\]
+
+و لذا
+
+\[
+{y(t)=x(t)}
+\]
+
+\subsectionaddtolist{ج}
+
+برای \(\theta\neq 0\):
+
+\[
+Y(j\omega)
+=
+\cos\theta\,X(j\omega)
++
+\frac12 e^{-j\theta}
+X\!\big(j(\omega-2\omega_c)\big)
++
+\frac12 e^{j\theta}
+X\!\big(j(\omega+2\omega_c)\big)
+\]
+
+بنابراین مؤلفهٔ مطلوب به اندازهٔ ضریب \(\cos\theta\) تضعیف می‌شود و دامنهٔ سیگنال بازیابی‌شده کاهش می‌یابد.
+
+همچنین دو جملهٔ
+
+\[
+\frac12 e^{-j\theta}
+X\!\big(j(\omega-2\omega_c)\big)
+\qquad \text{و} \qquad
+\frac12 e^{j\theta}
+X\!\big(j(\omega+2\omega_c)\big)
+\]
+
+به‌عنوان مؤلفه‌های تداخلی ظاهر می‌شوند.
+
+در حوزهٔ زمان می‌توان نوشت
+
+\[
+y(t)
+=
+\cos\theta\,x(t)
++
+\text{مؤلفه‌های تداخلی در فرکانس } 2\omega_c
+\]
+
+برای حذف این اثر باید آشکارسازی همدوس انجام شود؛ یعنی فاز حامل محلی با فاز حامل فرستنده یکسان گردد (\(\theta=0\)). در عمل این کار معمولاً با استفاده از PLL انجام می‌شود.

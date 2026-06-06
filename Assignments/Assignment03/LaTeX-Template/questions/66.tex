@@ -1,0 +1,137 @@
+\subsectionaddtolist{الف}
+
+قطار ضربه ایده‌آل با دوره تناوب $T$ به صورت زیر تعریف شده است:
+\begin{equation*}
+p(t) = \sum_{n=-\infty}^{\infty} \delta(t - nT)
+\end{equation*}
+
+این سیگنال یک سیگنال متناوب است، پس ابتدا ضریب سری فوریه آن ($a_k$) را محاسبه می‌کنیم:
+\begin{equation*}
+a_k = \frac{1}{T} \int_{-T/2}^{T/2} p(t) e^{-jk\omega_s t} dt = \frac{1}{T} \int_{-T/2}^{T/2} \delta(t) e^{-jk\omega_s t} dt = \frac{1}{T}
+\end{equation*}
+
+که در آن $\omega_s = \frac{2\pi}{T}$ فرکانس زاویه‌ای نمونه‌برداری است. طبق 
+رابطه بین سری فوریه و تبدیل فوریه سیگنال‌های متناوب
+، تبدیل فوریه یک سیگنال متناوب برحسب ضرایب سری فوریه آن به صورت زیر بیان می‌شود:
+\begin{equation*}
+P(j\omega) = 2\pi \sum_{k=-\infty}^{\infty} a_k \delta(\omega - k\omega_s)
+\end{equation*}
+
+با جایگذاری $a_k = \frac{1}{T}$، تبدیل فوریه قطار ضربه به دست می‌آید:
+\begin{equation*}
+P(j\omega) = \frac{2\pi}{T} \sum_{k=-\infty}^{\infty} \delta\left(\omega - \frac{2\pi k}{T}\right)
+\end{equation*}
+
+\subsectionaddtolist{ب}
+
+سیگنال نمونه‌برداری شده $x_p(t)$ حاصل‌ضرب سیگنال ورودی در قطار ضربه است:
+\begin{equation*}
+x_p(t) = x(t) \cdot p(t)
+\end{equation*}
+
+طبق خاصیت ضرب در حوزه زمان، این عمل در حوزه فرکانس به کانولوشن تبدیل می‌شود (همراه با ضریب $\frac{1}{2\pi}$):
+\begin{equation*}
+X_p(j\omega) = \frac{1}{2\pi} \Big[ X(j\omega) * P(j\omega) \Big]
+\end{equation*}
+
+با جایگذاری رابطه $P(j\omega)$ که در قسمت (الف) به دست آمد:
+\begin{equation*}
+X_p(j\omega) = \frac{1}{2\pi} \left[ X(j\omega) * \left( \frac{2\pi}{T} \sum_{k=-\infty}^{\infty} \delta\left(\omega - \frac{2\pi k}{T}\right) \right) \right]
+\end{equation*}
+
+از آنجا که کانولوشن هر تابع با تابع ضربه شفت‌یافته $\delta(\omega - \omega_0)$ برابر با شفت همان تابع است، رابطه نهایی به صورت تکرار تناوبی طیف $X(j\omega)$ حاصل می‌شود:
+\begin{equation*}
+X_p(j\omega) = \frac{1}{T} \sum_{k=-\infty}^{\infty} X\left(j\left(\omega - \frac{2\pi k}{T}\right)\right)
+\end{equation*}
+
+\subsectionaddtolist{ج}
+
+{ تحلیل فرکانس‌ها:}
+\begin{itemize}
+    \item پهنای باند سیگنال اصلی: طبق صورت سوال، طیف $X(j\omega)$ محدود به فرکانس ماکزیمم $\omega_M = 200\pi$ است.
+    \item فرکانس نمونه‌برداری: $\omega_s = \frac{2\pi}{T} = \frac{2\pi}{1/300} = 600\pi$
+\end{itemize}
+
+نرخ نایکوئیست برابر است با $2\omega_M = 400\pi$. از آنجا که $\omega_s = 600\pi > 400\pi$ است، شرط نایکوئیست برقرار بوده و هیچ‌گونه تداخل فرکانسی رخ نمی‌دهد.
+
+\begin{equation*}
+X_p(j\omega) = 300 \sum_{k=-\infty}^{\infty} X(j(\omega - 600\pi k))
+\end{equation*}
+
+مشخصه فیلتر پایین‌گذر به صورت زیر است:
+\begin{equation*}
+H(j\omega) = \begin{cases} 1, & |\omega| \le 300\pi \\ 0, & |\omega| > 300\pi \end{cases}
+\end{equation*}
+
+در محدوده باند عبور فیلتر ($|\omega| \le 300\pi$)، تنها جزء مربوط به $k=0$ از رابطه $X_p(j\omega)$ باقی می‌ماند (چون اجزای $k=\pm 1$ در فرکانس‌های حول $\pm 600\pi$ قرار دارند و کاملاً حذف می‌شوند). بنابراین طیف خروجی برابر است با:
+\begin{equation*}
+Y(j\omega) = X_p(j\omega) \cdot H(j\omega) = 300 X(j\omega)
+\end{equation*}
+
+با گرفتن عکس تبدیل فوریه، خروجی در حوزه زمان به دست می‌آید:
+\begin{equation*}
+y(t) = 300 x(t)
+\end{equation*}
+
+\subsectionaddtolist{د}
+
+\begin{equation*}
+x(t) = \cos(150\pi t) + \cos(300\pi t)
+\end{equation*}
+
+تبدیل فوریه این سیگنال حاوی ۴ ضربه در فرکانس‌های زیر است:
+\begin{equation*}
+X(j\omega) = \pi \Big[ \delta(\omega - 150\pi) + \delta(\omega + 150\pi) \Big] + \pi \Big[ \delta(\omega - 300\pi) + \delta(\omega + 300\pi) \Big]
+\end{equation*}
+در اینجا فرکانس ماکزیمم سیگنال $\omega_M = 300\pi$ است.
+
+{ نرخ نمونه‌برداری جدید:}
+\begin{equation*}
+T = \frac{1}{100} \implies \omega_s = \frac{2\pi}{T} = 200\pi
+\end{equation*}
+
+طیف سیگنال نمونه‌برداری شده برابر است با:
+\begin{equation*}
+X_p(j\omega) = 100 \sum_{k=-\infty}^{\infty} X(j(\omega - 200\pi k))
+\end{equation*}
+
+با اثر دادن شفت‌های متوالی فرکانس $\omega_s = 200\pi k$ روی تک‌تک ضربه‌ها و عبور دادن آن‌ها از فیلتر با باند عبور $|\omega| \le 300\pi$، فرکانس‌های زیر در خروجی ظاهر می‌شوند:
+\begin{itemize}
+    \item {تغییر مکان فرکانس‌های $\pm 150\pi$:}
+    \begin{itemize}
+        \item برای $k=0 \implies \pm 150\pi$ (داخل باند عبور)
+        \item برای $k=-1 \implies 150\pi - 200\pi = -50\pi$ (داخل باند عبور)
+        \item برای $k=1 \implies -150\pi + 200\pi = 50\pi$ (داخل باند عبور)
+    \end{itemize}
+    \item {تغییر مکان فرکانس‌های $\pm 300\pi$:}
+    \begin{itemize}
+        \item برای $k=0 \implies \pm 300\pi$ (روی لبه باند عبور فیلتر)
+        \item برای $k=-1 \implies 300\pi - 200\pi = 100\pi$ (داخل باند عبور)
+        \item برای $k=2 \implies -300\pi + 400\pi = 100\pi$ (داخل باند عبور)
+        \item برای $k=-2 \implies 300\pi - 400\pi = -100\pi$ (داخل باند عبور)
+        \item برای $k=1 \implies -300\pi + 200\pi = -100\pi$ (داخل باند عبور)
+        \item برای $k=3 \implies -300\pi + 600\pi = 300\pi$ (روی لبه باند عبور)
+        \item برای $k=-3 \implies 300\pi - 600\pi = -300\pi$ (روی لبه باند عبور)
+    \end{itemize}
+\end{itemize}
+
+دامنه هر ضربه در سیگنال اصلی برابر با $\pi$ بود که در ضریب $\frac{1}{T}=100$ ضرب می‌شود (ضریب کل $100\pi$). با جمع‌آوری مؤلفه‌های هم‌فرکانس داخل فیلتر داریم:
+\begin{itemize}
+    \item در فرکانس‌های $\pm 50\pi$: یک ضربه با دامنه $100\pi$
+    \item در فرکانس‌های $\pm 100\pi$: دو ضربه هم‌زمان ترکیب می‌شوند $\implies$ دامنه $200\pi$
+    \item در فرکانس‌های $\pm 150\pi$: یک ضربه با دامنه $100\pi$
+    \item در فرکانس‌های $\pm 300\pi$: دو ضربه هم‌زمان ترکیب می‌شوند $\implies$ دامنه $200\pi$
+\end{itemize}
+
+بنابراین تبدیل فوریه خروجی فیلتر عبارت است از:
+\begin{align*}
+Y(j\omega) = & 100\pi [\delta(\omega-50\pi)+\delta(\omega+50\pi)] + 200\pi [\delta(\omega-100\pi)+\delta(\omega+100\pi)] \\
+& + 100\pi [\delta(\omega-150\pi)+\delta(\omega+150\pi)] + 200\pi [\delta(\omega-300\pi)+\delta(\omega+300\pi)]
+\end{align*}
+
+با گرفتن عکس تبدیل فوریه، سیگنال خروجی نهایی به دست می‌آید:
+\begin{equation*}
+y(t) = 100\cos(50\pi t) + 200\cos(100\pi t) + 100\cos(150\pi t) + 200\cos(300\pi t)
+\end{equation*}
+
+پدیده نامطلوبی که در این حالت رخ داده است، {تداخل فرکانسی یا Aliasing} نام دارد. از آنجا که نرخ نمونه‌برداری ($\omega_s = 200\pi$) از نرخ نایکوئیست سیگنال ورودی ($2\omega_M = 600\pi$) کمتر انتخاب شده است، فرکانس‌های بالا پس از نمونه‌برداری به فرکانس‌های پایین‌تر شیفت پیدا کرده و با فرکانس‌های اصلی تداخل پیدا می‌کنند. این امر باعث تولید مؤلفه‌های فرکانسی جدید و کاذب ($50\pi$ و $100\pi$) در خروجی شده و بازسازی سیگنال اصلی را غیرممکن می‌سازد.

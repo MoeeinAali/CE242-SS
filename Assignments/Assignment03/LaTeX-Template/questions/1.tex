@@ -1,0 +1,32 @@
+\subsectionaddtolist{الف}
+سیگنال متناوب $p(t)$ را می‌توان به صورت کانولوشن یک پالس مستطیلی تک $p_0(t)$ و یک قطار ضربه $c(t)$ با دوره تناوب $T$ تعریف کرد:
+\[ p(t) = p_0(t) * c(t) \]
+که در آن:
+\[ p_0(t) = \Pi\left(\frac{t}{T/2}\right), \quad c(t) = \sum_{k=-\infty}^{\infty} \delta(t - kT) \]
+با اعمال خاصیت کانولوشن در حوزه فرکانس داریم:
+\[ P(j\omega) = P_0(j\omega) \cdot C(j\omega) \]
+تبدیل فوریه هر بخش به شرح زیر است:
+\[ P_0(j\omega) = \frac{T}{2} \text{sinc}\left(\frac{\omega T}{4}\right) \]
+\[ C(j\omega) = \frac{2\pi}{T} \sum_{k=-\infty}^{\infty} \delta(\omega - k\omega_0) \quad \left(\omega_0 = \frac{2\pi}{T}\right) \]
+با ضرب این دو عبارت:
+\[ P(j\omega) = \pi \sum_{k=-\infty}^{\infty} \text{sinc}\left(\frac{k\omega_0 T}{4}\right) \delta(\omega - k\omega_0) \]
+با توجه به اینکه $\frac{\omega_0 T}{4} = \frac{\pi}{2}$ است، تبدیل فوریه نهایی برابر است با:
+\[ P(j\omega) = \pi \sum_{k=-\infty}^{\infty} \text{sinc}\left(\frac{k\pi}{2}\right) \delta(\omega - k\omega_0) \]
+
+\subsectionaddtolist{ب}
+ضرایب سری فوریه سیگنال ورودی $a_k$ از روی تبدیل فرکانسی قطار پالس به دست می‌آید:
+\[ a_k = \frac{1}{2} \text{sinc}\left(\frac{k\pi}{2}\right) \]
+پاسخ فرکانسی سیستم برابر است با:
+\[ H(j\omega) = \frac{j\omega}{j\omega + 1} \]
+ضرایب سری فوریه خروجی ($b_k$) به صورت زیر تعریف می‌شوند:
+\[ b_k = a_k \cdot H(jk\omega_0) = \frac{1}{2} \text{sinc}\left(\frac{k\pi}{2}\right) \frac{jk\omega_0}{jk\omega_0 + 1} \]
+بنابراین سیگنال خروجی $y(t)$ به صورت سری فوریه جدید زیر بازنویسی می‌شود:
+\[ y(t) = \sum_{k=-\infty}^{\infty} \left[ \frac{1}{2} \text{sinc}\left(\frac{k\pi}{2}\right) \frac{jk\omega_0}{jk\omega_0 + 1} \right] e^{j k \omega_0 t} \]
+
+\subsectionaddtolist{ج}
+طبق قضیه پارسوال برای سیگنال‌های متناوب، توان متوسط خروجی برابر است با:
+\[ P_y = \sum_{k=-\infty}^{\infty} |b_k|^2 \]
+با محاسبه مجذور قدرمطلق $b_k$:
+\[ |b_k|^2 = |a_k|^2 \cdot |H(jk\omega_0)|^2 = \left| \frac{1}{2} \text{sinc}\left(\frac{k\pi}{2}\right) \right|^2 \cdot \frac{(k\omega_0)^2}{1 + (k\omega_0)^2} \]
+در نتیجه توان متوسط خروجی عبارت است از:
+\[ P_y = \frac{1}{4} \sum_{k=-\infty}^{\infty} \text{sinc}^2\left(\frac{k\pi}{2}\right) \frac{k^2\omega_0^2}{1 + k^2\omega_0^2} \]

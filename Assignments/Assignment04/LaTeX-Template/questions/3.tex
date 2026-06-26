@@ -1,0 +1,99 @@
+با توجه به اینکه سیگنال پیام $x(t)$ فاقد مولفه‌ی DC است، داریم
+\[
+\seq{x(t)} = 0
+\qquad
+P_x = \seq{x^2(t)}
+\]
+همچنین برای سیگنال حامل $c(t) = A_c \cos(\omega_c t)$ از روابط زیر استفاده می‌کنیم:
+\[
+\seq{\cos^2(\omega_c t)} = \frac{1}{2}
+\qquad
+\seq{x(t)\cos(2\omega_c t)} \approx 0
+\]
+که رابطه‌ی دوم به این دلیل برقرار است که طیف $x(t)$ پایین‌گذر بوده و با مولفه‌ی پُربسامد حامل همبستگی ندارد.
+
+\subsectionaddtolist{الف}
+
+سیگنال مدوله‌شده را بسط می‌دهیم:
+\[
+x_{AM}(t) = A_c\big[1 + \mu x(t)\big]\cos(\omega_c t)
+          = \underbrace{A_c \cos(\omega_c t)}_{\text{حامل}}
+          + \underbrace{A_c\mu\, x(t)\cos(\omega_c t)}_{\text{باندهای کناری}}.
+\]
+
+\subsubsection*{طیف فرکانسی:}
+ با تبدیل فوریه و استفاده از
+$\cos(\omega_c t) \leftrightarrow \pi[\delta(\omega-\omega_c)+\delta(\omega+\omega_c)]$
+و خاصیت مدولاسیون
+$x(t)\cos(\omega_c t) \leftrightarrow \tfrac{1}{2}[X(\omega-\omega_c)+X(\omega+\omega_c)]$
+داریم:
+\[
+\;
+X_{AM}(\omega) = A_c\pi\big[\delta(\omega-\omega_c)+\delta(\omega+\omega_c)\big]
+              + \frac{A_c\mu}{2}\big[X(\omega-\omega_c)+X(\omega+\omega_c)\big]
+\;
+\]
+ضربه‌ها متناظر با حامل و دو نسخه‌ی جابه‌جاشده‌ی $X(\omega)$ متناظر با باندهای کناری هستند.
+
+\subsubsection*{توان کل:}
+ مجذور سیگنال را محاسبه می‌کنیم:
+\[
+x_{AM}^2(t) = A_c^2\big[1 + 2\mu x(t) + \mu^2 x^2(t)\big]\,\frac{1+\cos(2\omega_c t)}{2}
+\]
+با گرفتن میانگین زمانی و استفاده از $\seq{x(t)}=0$ و $\seq{x^2(t)}=P_x$ (و حذف جملات پُربسامد):
+\[
+P_{AM} = \seq{x_{AM}^2(t)}
+       = \frac{A_c^2}{2}\Big[1 + 2\mu\!\cdot\!0 + \mu^2 P_x\Big]
+       = {\;\frac{A_c^2}{2}\big(1 + \mu^2 P_x\big)\;}
+\]
+که جمله‌ی $\frac{A_c^2}{2}$ توان حامل و جمله‌ی $\frac{A_c^2}{2}\mu^2 P_x$ توان باندهای کناری (حامل اطلاعات) است.
+
+\subsectionaddtolist{ب}
+
+\[
+x_{DSB}(t) = A_c\, x(t)\cos(\omega_c t).
+\]
+
+\subsubsection*{طیف فرکانسی:}
+ با خاصیت مدولاسیون:
+\[
+{\;
+X_{DSB}(\omega) = \frac{A_c}{2}\big[X(\omega-\omega_c)+X(\omega+\omega_c)\big]
+\;}
+\]
+بر خلاف AM در اینجا هیچ ضربه‌ای در $\pm\omega_c$ وجود ندارد؛ یعنی توانی صرف ارسال حامل نمی‌شود.
+
+\subsubsection*{توان کل:}
+\[
+x_{DSB}^2(t) = A_c^2\, x^2(t)\cos^2(\omega_c t)
+\]
+\[
+P_{DSB\text{-}SC} = \seq{x_{DSB}^2(t)}
+                 = A_c^2\, P_x \cdot \frac{1}{2}
+                 = {\;\frac{A_c^2}{2}\,P_x\;}
+\]
+
+\subsectionaddtolist{ج}
+
+بازده توان نسبت توان حامل اطلاعات (باندهای کناری) به توان کل است:
+\[
+\eta = \frac{P_{info}}{P_{total}}
+\]
+
+\subsubsection*{در AM :}
+ تنها باندهای کناری حامل اطلاعات‌اند و حامل خالص اطلاعاتی ندارد، پس
+$P_{info} = \frac{A_c^2}{2}\mu^2 P_x$ و $P_{total} = P_{AM}$:
+\[
+\eta_{AM} = \frac{\frac{A_c^2}{2}\mu^2 P_x}{\frac{A_c^2}{2}\big(1+\mu^2 P_x\big)}
+          = {\;\frac{\mu^2 P_x}{1 + \mu^2 P_x}\;}
+\]
+چون $\mu \in [0,1]$، این بازده همواره کوچک‌تر از $1$ است؛ حتی در بهترین حالت ($\mu=1$ و $P_x=1$) به مقدار $\eta_{AM} = \tfrac{1}{2} = 50\%$ می‌رسد و در عمل کمتر است.
+
+\subsubsection*{در DSB-SC :}
+ چون توانی صرف حامل نمی‌شود، تمام توان حامل اطلاعات است؛ یعنی
+$P_{info} = P_{total} = \frac{A_c^2}{2}P_x$:
+\[
+\eta_{DSB\text{-}SC} = {\;1 = 100\%\;}
+\]
+
+\textbf{مقایسه.} روش DSB-SC از نظر بازده توان کاملاً بهینه است ($100\%$) و تمام توان فرستنده را برای انتقال اطلاعات به کار می‌گیرد، در حالی که در AM بخش بزرگی از توان (دست‌کم نیمی از آن) صرف ارسال حامل بدون اطلاعات می‌شود و بازده آن حداکثر $50\%$ است. در مقابل، مزیت AM در سادگی گیرنده است: چون $1+\mu x(t) > 0$، می‌توان پیام را با آشکارساز \lr{Envelope Detector} ساده بازیابی کرد، اما DSB-SC به آشکارسازی \lr{Coherent} و بازیابی دقیق فاز حامل نیاز دارد.

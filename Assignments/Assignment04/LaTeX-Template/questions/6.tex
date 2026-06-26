@@ -1,0 +1,55 @@
+سیگنال \lr{FM} داده‌شده را با فرم استاندارد یک سیگنال مدوله‌شده‌ی فرکانسی مقایسه می‌کنیم:
+\[
+y(t) = 10\cos\!\big(10^6\pi t + 5\sin(2000\pi t)\big)
+\qquad\longleftrightarrow\qquad
+y(t) = A_c\cos\!\big(\omega_c t + \beta\sin(\omega_m t)\big)
+\]
+از این مقایسه بی‌درنگ $A_c = 10$ به دست می‌آید و فاز لحظه‌ای سیگنال برابر است با
+\[
+\theta(t) = 10^6\pi t + 5\sin(2000\pi t)
+\]
+
+\subsectionaddtolist{الف}
+
+با مقایسه‌ی جمله‌ی خطی فاز با $\omega_c t$ و آرگومان سینوس با $\omega_m t$ داریم:
+\[
+\omega_c = 10^6\pi \ \text{rad/s}
+\quad\Longrightarrow\quad
+f_c = \frac{\omega_c}{2\pi} = \frac{10^6}{2} = 5\times10^5 \ \text{Hz} = 500 \ \text{kHz}
+\]
+\[
+\omega_m = 2000\pi \ \text{rad/s}
+\quad\Longrightarrow\quad
+f_m = \frac{\omega_m}{2\pi} = 1000 \ \text{Hz} = 1 \ \text{kHz}
+\]
+
+\subsectionaddtolist{ب}
+
+شاخص مدولاسیون ضریب جمله‌ی $\sin(\omega_m t)$ در عبارت فاز است؛ پس:
+\[
+\beta = 5
+\]
+
+\subsectionaddtolist{ج}
+
+فرکانس لحظه‌ای از مشتق فاز نسبت به زمان به دست می‌آید:
+\[
+\omega_i(t) = \frac{d\theta(t)}{dt}
+            = \frac{d}{dt}\Big(10^6\pi t + 5\sin(2000\pi t)\Big)
+\]
+\[
+\omega_i(t) = 10^6\pi + 5\cdot(2000\pi)\cos(2000\pi t)
+            = 10^6\pi + 10^4\pi\cos(2000\pi t) \ \text{rad/s}
+\]
+یعنی فرکانس لحظه‌ای حول مقدار حامل $10^6\pi$ با دامنه‌ی $10^4\pi$ نوسان می‌کند.
+
+\subsectionaddtolist{د}
+
+حداکثر انحراف فرکانس برابر بیشینه‌ی اختلاف فرکانس لحظه‌ای از فرکانس حامل است. چون $|\cos(2000\pi t)| \leq 1$:
+\[
+\Delta\omega = \max\big|\omega_i(t) - \omega_c\big| = 10^4\pi \ \text{rad/s}
+\]
+به‌طور معادل با رابطه‌ی $\Delta\omega = \beta\,\omega_m = 5\times 2000\pi = 10^4\pi$ نیز به همین نتیجه می‌رسیم، و بر حسب هرتز:
+\[
+\Delta f = \frac{\Delta\omega}{2\pi} = 5000 \ \text{Hz} = 5 \ \text{kHz}
+\]

@@ -1,0 +1,95 @@
+طبق قضیه‌ی نمونه‌برداری نایکوئیست، اگر سیگنال باندمحدود با بیشینه فرکانس $\omega_{max}$ باشد، برای امکان بازسازی باید فرکانس نمونه‌برداری از نرخ نایکوئیست بزرگ‌تر یا مساوی آن باشد:
+
+\[
+\omega_s \geq 2\,\omega_{max}
+\qquad\Longleftrightarrow\qquad
+T \leq T_{max} = \frac{2\pi}{\omega_s^{\min}} = \frac{\pi}{\omega_{max}}
+\]
+پس در هر مورد کافی است $\omega_{max}$ را بیابیم. زوج تبدیل پرکاربرد را با تابع دروازه‌ای \lr{rect} نشان می‌دهیم؛ $G_a(\omega)$ برابر $1$ برای $|\omega| < a$ و صفر در بیرون این بازه است:
+\[
+\frac{\sin(a t)}{\pi t} \;\xrightarrow{\ \mathcal{F}\ }\; G_a(\omega)
+\qquad\Longrightarrow\qquad
+\text{باند این جمله } = a
+\]
+
+\subsectionaddtolist{الف}
+
+\[
+x_1(t) = \frac{1}{t}\sin(3\pi t) + \cos(2\pi t)
+\]
+جمله‌ی اول را به فرم استاندارد می‌نویسیم:
+\[
+\frac{\sin(3\pi t)}{t} = \pi\cdot\frac{\sin(3\pi t)}{\pi t}
+\;\xrightarrow{\ \mathcal{F}\ }\;
+\pi\,G_{3\pi}(\omega)
+\quad\Rightarrow\quad \text{باند} = 3\pi
+\]
+جمله‌ی دوم $\cos(2\pi t)$ ضربه‌هایی در $\omega = \pm 2\pi$ دارد، پس باند آن $2\pi$ است. بیشینه‌ی فرکانس کل سیگنال:
+\[
+\omega_{max} = \max\{3\pi,\,2\pi\} = 3\pi
+\]
+\[
+\omega_s^{\min} = 2\omega_{max} = 6\pi \ \text{rad/s},
+\qquad
+T_{max} = \frac{\pi}{\omega_{max}} = \frac{\pi}{3\pi} = \frac{1}{3}\ \text{s}
+\]
+
+\subsectionaddtolist{ب}
+
+\[
+x_2(t) = \cos(12\pi t)\,\frac{\sin(\pi t)}{2t}
+\]
+ابتدا عامل پایه را تحلیل می‌کنیم:
+\[
+\frac{\sin(\pi t)}{2t} = \frac{\pi}{2}\cdot\frac{\sin(\pi t)}{\pi t}
+\;\xrightarrow{\ \mathcal{F}\ }\;
+\frac{\pi}{2}\,G_{\pi}(\omega)
+\quad\Rightarrow\quad \text{باند پایه} = \pi
+\]
+ضرب در $\cos(12\pi t)$ این طیف را به $\pm 12\pi$ منتقل می‌کند، پس طیف در بازه‌های $|\omega \mp 12\pi| < \pi$، یعنی از $11\pi$ تا $13\pi$ (و قرینه‌ی آن) قرار می‌گیرد. بنابراین:
+\[
+\omega_{max} = 12\pi + \pi = 13\pi
+\]
+\[
+\omega_s^{\min} = 2\omega_{max} = 26\pi \ \text{rad/s},
+\qquad
+T_{max} = \frac{\pi}{13\pi} = \frac{1}{13}\ \text{s}
+\]
+
+\subsectionaddtolist{ج}
+
+\[
+x_3(t) = e^{-6t} * \frac{\sin(\omega t)}{\pi t}
+\]
+کانولوشن در زمان معادل ضرب در حوزه‌ی فرکانس است. عامل دوم یک فیلتر پایین‌گذر ایده‌آل با فرکانس قطع $\omega$ است:
+\[
+\frac{\sin(\omega t)}{\pi t} \;\xrightarrow{\ \mathcal{F}\ }\; G_{\omega}(\Omega)
+\]
+هر چند طیف $e^{-6t}$ پهنای باند نامحدود دارد، حاصل‌ضرب آن با این مستطیل، طیف نتیجه را به $|\Omega| < \omega$ محدود می‌کند:
+\[
+X_3(\Omega) = \underbrace{\Big(\tfrac{1}{6+j\Omega}\Big)}_{\mathcal{F}\{e^{-6t}u(t)\}}\cdot G_{\omega}(\Omega)
+\quad\Rightarrow\quad
+\omega_{max} = \omega
+\]
+\[
+\omega_s^{\min} = 2\omega \ \text{rad/s},
+\qquad
+T_{max} = \frac{\pi}{\omega}\ \text{s}
+\]
+
+\subsectionaddtolist{د}
+
+\[
+x_4(t) = w(t)\,z(t)
+\]
+ضرب در زمان معادل کانولوشن در فرکانس است؛ پهنای باند حاصل‌ضرب برابر مجموع پهنای باند دو سیگنال می‌شود. طبق شکل ۹، طیف $z(t)$ تا $4\pi$ و طیف $w(t)$ تا $W_a$ گسترده است:
+\[
+X_4(j\omega) = \frac{1}{2\pi}\,W(j\omega) * Z(j\omega)
+\quad\Rightarrow\quad
+\omega_{max} = W_a + 4\pi
+\]
+\[
+\omega_s^{\min} = 2\big(W_a + 4\pi\big) \ \text{rad/s},
+\qquad
+T_{max} = \frac{\pi}{W_a + 4\pi}\ \text{s}
+\]

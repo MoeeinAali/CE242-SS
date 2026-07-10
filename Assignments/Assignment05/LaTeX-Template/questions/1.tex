@@ -1,0 +1,45 @@
+\subsectionaddtolist{الف}
+
+سیگنال داده‌شده را می‌توان به صورت مجموع دو سیگنال نوشت:
+\begin{equation*}
+x[n] = n \left(\frac{1}{2}\right)^{|n|} = n \left(\frac{1}{2}\right)^n u[n] + n \left(\frac{1}{2}\right)^{-n} u[-n-1]
+\end{equation*}
+\begin{equation*}
+x[n] = n \left(\frac{1}{2}\right)^n u[n] + n (2)^n u[-n-1]
+\end{equation*}
+
+با استفاده از خاصیت مشتق‌گیری در حوزه Z که به صورت $\mathcal{Z}\{n g[n]\} = -z \frac{dG(z)}{dz}$ تعریف می‌شود، تبدیل Z هر بخش را به دست می‌آوریم:
+\begin{enumerate}
+    \item برای بخش اول $x_1[n] = n \left(\frac{1}{2}\right)^n u[n]$:
+    \begin{equation*}
+    \mathcal{Z}\left\{\left(\frac{1}{2}\right)^n u[n]\right\} = \frac{1}{1 - \frac{1}{2}z^{-1}} \quad \Rightarrow \quad X_1(z) = -z \frac{d}{dz} \left( \frac{1}{1 - \frac{1}{2}z^{-1}} \right) = \frac{\frac{1}{2}z^{-1}}{\left(1 - \frac{1}{2}z^{-1}\right)^2}
+    \end{equation*}
+    
+    \item برای بخش دوم $x_2[n] = n (2)^n u[-n-1]$:
+    \begin{equation*}
+    \mathcal{Z}\left\{(2)^n u[-n-1]\right\} = -\frac{1}{1 - 2z^{-1}} \quad \Rightarrow \quad X_2(z) = -z \frac{d}{dz} \left( -\frac{1}{1 - 2z^{-1}} \right) = \frac{-2z^{-1}}{\left(1 - 2z^{-1}\right)^2}
+    \end{equation*}
+\end{enumerate}
+
+بنابراین، تبدیل Z کل سیگنال در فرم بسته برابر است با:
+\begin{equation*}
+X(z) = \frac{\frac{1}{2}z^{-1}}{\left(1 - \frac{1}{2}z^{-1}\right)^2} - \frac{2z^{-1}}{\left(1 - 2z^{-1}\right)^2}
+\end{equation*}
+
+\subsectionaddtolist{ب}
+
+ناحیه همگرایی کل، اشتراک نواحی همگرایی دو بخش فوق است:
+\begin{itemize}
+    \item برای جمله اول: $|z| > \frac{1}{2}$
+    \item برای جمله دوم: $|z| < 2$
+\end{itemize}
+با اشتراک گرفتن از این دو بازه، ناحیه همگرایی به دست می‌آید:
+\begin{equation*}
+\frac{1}{2} < |z| < 2
+\end{equation*}
+
+\subsectionaddtolist{ج}
+
+یک سیگنال زمان-گسسته دارای تبدیل فوریه (DTFT) است اگر و تنها اگر ناحیه همگرایی تبدیل Z آن شامل دایره واحد ($|z| = 1$) باشد.
+\newline
+با توجه به ناحیه همگرایی به دست آمده در بخش قبل ($\frac{1}{2} < |z| < 2$)، دایره واحد ($|z| = 1$) کاملاً درون این ناحیه قرار دارد. بنابراین، این سیگنال {دارای تبدیل فوریه زمان-گسسته است}.

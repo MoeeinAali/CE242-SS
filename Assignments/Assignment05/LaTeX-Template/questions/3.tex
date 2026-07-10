@@ -1,54 +1,54 @@
 \subsectionaddtolist{الف}
 
 سیستم فرکانس $\omega = \frac{\pi}{2}$ را به طور کامل حذف می‌کند. از آنجا که پاسخ ضربه حقیقی است، صفرهای سیستم باید به صورت جفت مزدوج مختلط روی دایره واحد در فرکانس‌های $\pm \frac{\pi}{2}$ قرار گیرند:
-    \begin{equation*}
+    \[
     z_{1,2} = e^{\pm j \frac{\pi}{2}} = \pm j
-    \end{equation*}
+    \]
     بنابراین عامل صفرها در تابع تبدیل به صورت زیر است:
-    \begin{equation*}
+    \[
     (z - j)(z + j) = z^2 + 1
-    \end{equation*}
+    \]
 
 سیستم دارای دو قطب در شعاع $r = 0.5$ و زوایای $\theta = \pm \frac{\pi}{3}$ است:
-    \begin{equation*}
+    \[
     p_{1,2} = 0.5 e^{\pm j \frac{\pi}{3}} = 0.5 \left( \cos\frac{\pi}{3} \pm j \sin\frac{\pi}{3} \right) = 0.5 \left( \frac{1}{2} \pm j \frac{\sqrt{3}}{2} \right) = \frac{1}{4} \pm j \frac{\sqrt{3}}{4}
-    \end{equation*}
+    \]
     بنابراین عامل قطب‌ها در مخرج تابع تبدیل برابر است با:
-    \begin{equation*}
+    \[
     (z - p_1)(z - p_2) = z^2 - (p_1 + p_2)z + p_1 p_2 = z^2 - 2(0.5)\cos\left(\frac{\pi}{3}\right)z + (0.5)^2
-    \end{equation*}
-    \begin{equation*}
+    \]
+    \[
     = z^2 - 0.5z + 0.25
-    \end{equation*}
+    \]
 
 بنابراین شکل کلی تابع تبدیل با در نظر گرفتن ضریب بهره $K$ به صورت زیر خواهد بود:
-\begin{equation*}
+\[
 H(z) = K \frac{z^2 + 1}{z^2 - 0.5z + 0.25} = K \frac{1 + z^{-2}}{1 - 0.5z^{-1} + 0.25z^{-2}}
-\end{equation*}
+\]
 
 برای یافتن $K$، از اطلاعات سوم یعنی بهره DC (در فرکانس $\omega = 0$ یا همان $z = e^{j0} = 1$) استفاده می‌کنیم که برابر با ۱ است:
-\begin{equation*}
+\[
 |H(1)| = 1 \implies K \frac{1^2 + 1}{1^2 - 0.5(1) + 0.25} = 1 \implies K \frac{2}{0.75} = 1 \implies K = \frac{0.75}{2} = \frac{3}{8} = 0.375
-\end{equation*}
+\]
 
 بنابراین تابع تبدیل نهایی سیستم عبارت است از:
-\begin{equation*}
+\[
 H(z) = \frac{3}{8} \left( \frac{z^2 + 1}{z^2 - 0.5z + 0.25} \right) = 0.375 \left( \frac{1 + z^{-2}}{1 - 0.5z^{-1} + 0.25z^{-2}} \right)
-\end{equation*}
+\]
 
 چون در صورت سوال ذکر شده که سیستم {علی} است، ناحیه همگرایی باید به صورت خارج بزرگترین قطب سیستم در صفحه Z باشد. بزرگترین شعاع قطب‌ها برابر با $r = 0.5$ است، پس:
-\begin{equation*}
+\[
 \text{ROC: } |z| > 0.5
-\end{equation*}
+\]
 
 \subsectionaddtolist{ب}
 بالاترین فرکانس نوسانی در سیستم‌های زمان-گسسته فرکانس نایکوئیست یعنی $\omega = \pi$ است که معادل جایگذاری $z = e^{j\pi} = -1$ در تابع تبدیل است:
-\begin{equation*}
+\[
 H(e^{j\pi}) = H(-1) = \frac{3}{8} \left( \frac{(-1)^2 + 1}{(-1)^2 - 0.5(-1) + 0.25} \right)
-\end{equation*}
-\begin{equation*}
+\]
+\[
 H(-1) = \frac{3}{8} \left( \frac{1 + 1}{1 + 0.5 + 0.25} \right) = \frac{3}{8} \left( \frac{2}{1.75} \right) = \frac{3}{8} \left( \frac{2}{\frac{7}{4}} \right) = \frac{3}{8} \times \frac{8}{7} = \frac{3}{7} \approx 0.428
-\end{equation*}
+\]
 
 \subsectionaddtolist{ج}
 
